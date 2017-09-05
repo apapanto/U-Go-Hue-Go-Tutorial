@@ -15,6 +15,14 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
+  lightSwitch(lightNumber, lightState) {
+    this.http.put(`${this.hueApiUrl}/${lightNumber}/state`, { "on": lightState })
+    .subscribe(
+      data => { console.log(data); },
+      err => { console.log('Something went wrong!'); } 
+    );
+  }
+
   ngOnInit(): void {
     this.http.get(this.hueApiUrl)
     .subscribe(

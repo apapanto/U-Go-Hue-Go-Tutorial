@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+
+h1, h2, p, .k-switch {
+  font-family: 'Fredoka One', Helvetica, sans-serif;
+}
+
+h2 {
+  margin: .5em 0;
+}
+
+h1, p {
+  margin: 0 .25em;
+}
+
+h1 {
+  background-color: white;
+  color: #ff6358;
+  padding: 0 .5em;
+  width: 6.75em;
+}
+
+li {
+  list-style: none;
+}
+
+.lights {
+  margin: 0 auto;
+  width: 95%;
+}
+
+.light-box {
+  background-color: white;
+  border: 3px solid black;
+  float: left;
+  margin: 1em;
+  padding: 0 0 1em 1.5em; 
+  width: 20em;
+}
+
+.light-switch {
+  margin-bottom: .75em;
+}
