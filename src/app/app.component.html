@@ -9,6 +9,16 @@
           (click)="lightSwitch(i+1, light.state.on)">
         </kendo-switch>
       </div>
+      <div class="light-bright">
+        <p> brightness </p>
+        <kendo-slider
+          [(ngModel)]="light.state.bri" 
+          (click)="lightBright(i+1, light.state.bri)"
+          [min]=0
+          [max]=254
+          [smallStep]=10>
+        </kendo-slider>
+      </div>
     </li>
   </ul>
 </div>
