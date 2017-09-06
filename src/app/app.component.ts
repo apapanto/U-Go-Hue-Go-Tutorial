@@ -15,30 +15,6 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  lightSwitch(lightNumber, lightState) {
-    this.http.put(`${this.hueApiUrl}/${lightNumber}/state`, { "on": lightState })
-    .subscribe(
-      data => { console.log(data); },
-      err => { console.log('Something went wrong!'); } 
-    );
-  }
-
-  lightBright(lightNumber, briValue){
-    this.http.put(`${this.hueApiUrl}/${lightNumber}/state`, { "bri": briValue })
-    .subscribe(
-      data => { console.log(data); },
-      err => { console.log('Something went wrong!'); } 
-    );
-  }
-
-  lightHue(lightNumber, hueValue){
-    this.http.put(`${this.hueApiUrl}/${lightNumber}/state`, { "hue": hueValue })
-    .subscribe(
-      data => { console.log(data); },
-      err => { console.log('Something went wrong!'); } 
-    );
-  }
-
   ngOnInit(): void {
     this.http.get(this.hueApiUrl)
     .subscribe(

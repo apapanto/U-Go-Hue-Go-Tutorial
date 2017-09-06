@@ -3,32 +3,6 @@
   <ul *ngFor="let light of lights; let i = index">
     <li class="light-box">
       <h2> {{ light.name | uppercase }} </h2>
-      <div class="light=switch">
-        <kendo-switch
-          [(ngModel)]="light.state.on"
-          (click)="lightSwitch(i+1, light.state.on)">
-        </kendo-switch>
-      </div>
-      <div class="light-bright">
-        <p> brightness </p>
-        <kendo-slider
-          [(ngModel)]="light.state.bri" 
-          (click)="lightBright(i+1, light.state.bri)"
-          [min]=0
-          [max]=254
-          [smallStep]=10>
-        </kendo-slider>
-      </div>
-      <div class="light-hue" *ngIf="light.state.hue >= 0">
-        <p> hue </p>
-        <kendo-slider
-          [(ngModel)]="light.state.hue"
-          (click)="lightHue(i+1, light.state.hue)"
-          [min]=0
-          [max]=65535
-          [smallStep]=1500>
-        </kendo-slider>
-      </div>
     </li>
   </ul>
 </div>
