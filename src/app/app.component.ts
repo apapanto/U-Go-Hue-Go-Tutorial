@@ -12,8 +12,20 @@ export class AppComponent implements OnInit {
   private hueApiUrl: string = `http://<Bridge IP here>/api/${this.username}/lights`;
   // ex: 192.168.0.110
   private lights: string[];
+  private lightChangeValues = {};
 
   constructor(private http: HttpClient) {}
+
+  lightChange(lightNumber, property, propertyValue){
+    this.lightChangeValues[property] =  propertyValue;
+    this.http.put(
+      `${this.hueApiUrl}/${lightNumber}/state`, this.lightChangeValues
+    )
+    .subscribe(
+      data => { console.log(data); },
+      err => { console.log('Something went wrong!'); }
+    );
+  }
 
   ngOnInit(): void {
     this.http.get(this.hueApiUrl)
