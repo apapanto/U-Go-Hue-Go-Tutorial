@@ -3,6 +3,12 @@
   <ul *ngFor="let light of lights; let i = index">
     <li class="light-box">
       <h2> {{ light.name | uppercase }} </h2>
+      <div class="light=switch">
+        <kendo-switch
+          [(ngModel)]="light.state.on"
+          (click)="lightChange(i+1, 'on', light.state.on)">
+        </kendo-switch>
+      </div>
     </li>
   </ul>
 </div>
