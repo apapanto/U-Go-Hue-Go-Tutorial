@@ -19,6 +19,16 @@
           [smallStep]=10>
         </kendo-slider>
       </div>
+      <div class="light-hue" *ngIf="light.state.hue >= 0">
+        <p> hue </p>
+        <kendo-slider
+          [(ngModel)]="light.state.hue"
+          (click)="lightHue(i+1, light.state.hue)"
+          [min]=0
+          [max]=65535
+          [smallStep]=1500>
+        </kendo-slider>
+      </div>
     </li>
   </ul>
 </div>

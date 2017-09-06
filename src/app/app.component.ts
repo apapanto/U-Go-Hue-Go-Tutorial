@@ -31,6 +31,14 @@ export class AppComponent implements OnInit {
     );
   }
 
+  lightHue(lightNumber, hueValue){
+    this.http.put(`${this.hueApiUrl}/${lightNumber}/state`, { "hue": hueValue })
+    .subscribe(
+      data => { console.log(data); },
+      err => { console.log('Something went wrong!'); } 
+    );
+  }
+
   ngOnInit(): void {
     this.http.get(this.hueApiUrl)
     .subscribe(
