@@ -20,6 +20,28 @@
           tickPlacement="none">
         </kendo-slider>
       </div>
+      <div class="light-hue" *ngIf="light.state.hue >= 0">
+        <p> hue </p>
+        <kendo-slider
+          [(ngModel)]="light.state.hue"
+          (click)="lightChange(i+1, 'hue', light.state.hue)"
+          [min]=0
+          [max]=65535
+          [smallStep]=1500
+          tickPlacement="none">
+        </kendo-slider>
+      </div>
+      <div class="light-sat" *ngIf="light.state.sat >= 0">
+        <p> saturation </p>
+        <kendo-slider
+          [(ngModel)]="light.state.sat"
+          (click)="lightSat(i+1, 'sat', light.state.sat)"
+          [min]=0
+          [max]=254
+          [smallStep]=10
+          tickPlacement="none">
+        </kendo-slider>
+      </div>
     </li>
   </ul>
 </div>
