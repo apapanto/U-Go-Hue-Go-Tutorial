@@ -1,5 +1,18 @@
-# UGoHueGoTutorial
+#  ⚪️🚶🏻‍ U Go Hue Go - Tutorial 💡
+You can use this project with your own Philips Hue lighting system by
+- Cloning
 
+`
+git clone https://github.com/tzmanics/U-Go-Hue-Go-Tutorial
+`
+- Running `npm i` to install needed packages.
+- Adding your Philips Hue API username [here](https://github.com/tzmanics/U-Go-Hue-Go-Tutorial/blob/master/src/app/app.component.ts#L10) and your Philips Hue Bridge IP address [here](https://github.com/tzmanics/U-Go-Hue-Go-Tutorial/blob/master/src/app/app.component.ts#L12)
+
+To get your Philips Hue information follow their getting started guide [here](https://developers.meethue.com/documentation/getting-started).
+
+Happy Coding (& Lighting 😉)!!
+
+------
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
 
 ## Development server
