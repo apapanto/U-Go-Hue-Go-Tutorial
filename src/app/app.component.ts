@@ -30,7 +30,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.http.get(this.hueApiUrl)
     .subscribe(
-      data => { this.lights = Object.keys(data).map(key => data[key]); },
+      data => { 
+        this.lights = Object.values(data);
+        // for early browser version and ie support
+        // this.lights = Object.keys(data).map(key => data[key]);
+      },
       err => { console.log('Something went wrong!'); }
     )
   }
