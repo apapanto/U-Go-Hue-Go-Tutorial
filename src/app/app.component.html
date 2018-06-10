@@ -1,46 +1,60 @@
 <h1> U GO HUE GO </h1>
 <div class="lights">
-  <ul *ngFor="let light of lights; let i = index">
+  <ul *ngFor="let light of lights">
     <li class="light-box">
       <h2> {{ light.name | uppercase }} </h2>
       <div class="light-switch">
         <kendo-switch
           [(ngModel)]="light.state.on"
-          (click)="lightChange(i+1, 'on', light.state.on)">
+          (click)="lightChange(light.lightId, 'on', light.state.on)"
+          [disabled]="!light.state.reachable">
         </kendo-switch>
       </div>
-      <div class="light-bright">
-        <p> brightness </p>
-        <kendo-slider
-          [(ngModel)]="light.state.bri"
-          (click)="lightChange(i+1, 'bri', light.state.bri)"
-          [min]=0
-          [max]=254
-          [smallStep]=10
-          tickPlacement="none">
-        </kendo-slider>
-      </div>
-      <div class="light-hue" *ngIf="light.state.hue >= 0">
-        <p> hue </p>
-        <kendo-slider
-          [(ngModel)]="light.state.hue"
-          (click)="lightChange(i+1, 'hue', light.state.hue)"
-          [min]=0
-          [max]=65535
-          [smallStep]=1500
-          tickPlacement="none">
-        </kendo-slider>
-      </div>
-      <div class="light-sat" *ngIf="light.state.sat >= 0">
-        <p> saturation </p>
-        <kendo-slider
-          [(ngModel)]="light.state.sat"
-          (click)="lightSat(i+1, 'sat', light.state.sat)"
-          [min]=0
-          [max]=254
-          [smallStep]=10
-          tickPlacement="none">
-        </kendo-slider>
+      <div *ngIf="light.state.reachable">
+        <div class="light-bright">
+          <p> brightness </p>
+          <kendo-slider
+            [(ngModel)]="light.state.bri"
+            (click)="lightChange(light.lightId, 'bri', light.state.bri)"
+            [min]=0
+            [max]=254
+            [smallStep]=10
+            tickPlacement="none">
+          </kendo-slider>
+        </div>
+        <div class="light-ct" *ngIf="light.state.ct >= 0">
+          <p> warmth (ct) </p>
+          <kendo-slider
+            [(ngModel)]="light.state.ct"
+            (click)="lightChange(light.lightId, 'ct', light.state.ct)"
+            [min]=153
+            [max]=500
+            [smallStep]=10
+            tickPlacement="none">
+          </kendo-slider>
+        </div>
+        <div class="light-hue" *ngIf="light.state.hue >= 0">
+          <p> hue </p>
+          <kendo-slider
+            [(ngModel)]="light.state.hue"
+            (click)="lightChange(light.lightId, 'hue', light.state.hue)"
+            [min]=0
+            [max]=65535
+            [smallStep]=1500
+            tickPlacement="none">
+          </kendo-slider>
+        </div>
+        <div class="light-sat" *ngIf="light.state.sat >= 0">
+          <p> saturation </p>
+          <kendo-slider
+            [(ngModel)]="light.state.sat"
+            (click)="lightSat(light.lightId, 'sat', light.state.sat)"
+            [min]=0
+            [max]=254
+            [smallStep]=10
+            tickPlacement="none">
+          </kendo-slider>
+        </div>
       </div>
     </li>
   </ul>

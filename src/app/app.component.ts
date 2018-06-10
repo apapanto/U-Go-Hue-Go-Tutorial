@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   // ex: 2DNWwpZpUyMZ3zzaGM53HWA70kwxCu-YFTzBojG2
   private hueApiUrl: string = `http://<Bridge IP here>/api/${this.username}/lights`;
   // ex: 192.168.0.110
-  private lights: string[];
+  private lights;
   private lightChangeValues = {};
 
   constructor(private http: HttpClient) {}
@@ -31,9 +31,12 @@ export class AppComponent implements OnInit {
     this.http.get(this.hueApiUrl)
     .subscribe(
       data => { 
-        this.lights = Object.values(data);
-        // for early browser version and ie support
-        // this.lights = Object.keys(data).map(key => data[key]);
+        this.lights = [];
+        for (let i in data) {
+           data[i].lightId = i;
+           this.lights.push(data[i]);
+        }
+        console.log(this.lights);
       },
       err => { console.log('Something went wrong!'); }
     )
